@@ -5,7 +5,7 @@
 
 <strong>Address:</strong> {{ store.address }}
 
-<h2>Items</h2>
+<h2>Store Items</h2>
 
 <div class="items">
     {% for item in store.items %}
@@ -14,6 +14,22 @@
         <p><strong>{{ item.name }}</strong></p></a>
         <p><strong>Price: ${{ item.price }}</strong></p>
     </div>
+    {% endfor %}
+</div>
+
+<h2>Add Existing Items</h2>
+<div class="items">
+    {% for item in all_items %}
+        {% if item not in store.items %}
+        <div class="item-details">
+            <img src="{{ item.photo_url }}" alt="{{ item.name }}" width="200px">
+            <p><strong>{{ item.name }}</strong></p>
+            <p><strong>Price: ${{ item.price }}</strong></p>
+            <form method="POST" action="{{ url_for('main.add_item_to_store', store_id=store.id, item_id=item.id) }}">
+                <button type="submit">Add to Store</button>
+            </form>
+        </div>
+        {% endif %}
     {% endfor %}
 </div>
 

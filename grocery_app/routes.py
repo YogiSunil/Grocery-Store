@@ -49,13 +49,23 @@ def new_item():
 def store_detail(store_id):
     store = GroceryStore.query.get_or_404(store_id)
     form = GroceryStoreForm(obj=store)
+    all_items = GroceryItem.query.all()
     if form.validate_on_submit():
         store.title = form.title.data
         store.address = form.address.data
         db.session.commit()
         flash('Store was updated successfully.')
         return redirect(url_for('main.store_detail', store_id=store.id))
-    return render_template('store_detail.html', store=store, form=form)
+    return render_template('store_detail.html', store=store, form=form, all_items=all_items)
+
+@main.route('/store/<store_id>/add_item/<item_id>', methods=['POST'])
+def add_item_to_store(store_id, item_id):
+    store = GroceryStore.query.get_or_404(store_id)
+    item = GroceryItem.query.get_or_404(item_id)
+    item.store = store
+    db.session.commit()
+    flash('Item added to store successfully.')
+    return redirect(url_for('main.store_detail', store_id=store_id))
 
 @main.route('/item/<item_id>', methods=['GET', 'POST'])
 def item_detail(item_id):
