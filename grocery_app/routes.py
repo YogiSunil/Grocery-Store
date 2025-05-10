@@ -13,6 +13,16 @@ auth = Blueprint("auth", __name__)
 def signup():
     form = SignUpForm()
     if form.validate_on_submit():
+        existing_user = User.query.filter_by(username=form.username.data).first()
+        existing_email = User.query.filter_by(email=form.email.data).first()
+        
+        if existing_user:
+            flash('Username already exists. Please choose a different one.')
+            return render_template('signup.html', form=form)
+        elif existing_email:
+            flash('Email already registered. Please use a different email.')
+            return render_template('signup.html', form=form)
+            
         hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
         user = User(
             username=form.username.data,
@@ -21,7 +31,7 @@ def signup():
         )
         db.session.add(user)
         db.session.commit()
-        flash('Account Created.')
+        flash('Account created successfully! Please login.')
         return redirect(url_for('auth.login'))
     return render_template('signup.html', form=form)
 
