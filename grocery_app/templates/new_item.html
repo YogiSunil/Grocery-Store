@@ -9,11 +9,24 @@
 
 
 
-        <!-- TODO: Remove the next paragraph and use the `form` object passed in 
-            from the route to render a form. -->
-        <p><em>Form fields go here!</em></p>
+        {{ form.csrf_token }}
+        
+        {{ form.name.label }}
+        {{ form.name }}
 
-        <input type="submit" value="Submit">
+        {{ form.price.label }}
+        {{ form.price }}
+
+        {{ form.category.label }}
+        {{ form.category }}
+
+        {{ form.photo_url.label }}
+        {{ form.photo_url }}
+
+        {{ form.store.label }}
+        {{ form.store }}
+
+        {{ form.submit }}
     </fieldset>
 </form>
 
