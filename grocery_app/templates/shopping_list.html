@@ -1,0 +1,21 @@
+
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Shopping List</h1>
+
+<div class="items">
+    {% for item in shopping_list_items %}
+    <div class="item-details">
+        <img src="{{ item.photo_url }}" alt="{{ item.name }}" width="200px">
+        <p><strong>{{ item.name }}</strong></p>
+        <p><strong>Price: ${{ item.price }}</strong></p>
+        <p>Store: {{ item.store.title }}</p>
+        <form method="POST" action="{{ url_for('main.remove_from_shopping_list', item_id=item.id) }}">
+            <input type="submit" value="Remove from List">
+        </form>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
