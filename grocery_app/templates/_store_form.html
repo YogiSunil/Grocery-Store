@@ -1,0 +1,252 @@
+
+{{ form.csrf_token }}
+
+{{ form.title.label }}
+{{ form.title }}
+
+{{ form.address.label }}
+{{ form.address }}
+
+{{ form.submit }}
+
+{% if form.errors %}
+    <ul>
+        {% for field, errors in form.errors.items %}
+            {% for error in errors %}
+                <li>{{ field }}: {{ error }}</li>
+            {% endfor %}
+        {% endfor %}
+    </ul>
+{% endif %}
+
+{% if form.title.value %}
+    <p>Title: {{ form.title.value }}</p>
+{% endif %}
+
+{% if form.address.value %}
+    <p>Address: {{ form.address.value }}</p>
+{% endif %}
+
+{% if form.submit.value %}
+    <p>Submit: {{ form.submit.value }}</p>
+{% endif %}
+
+{% if form.csrf_token %}
+    <p>CSRF Token: {{ form.csrf_token }}</p>
+{% endif %} 
+
+{% if form.errors %}
+    <p>Errors: {{ form.errors }}</p>
+{% endif %}
+
+{% if form.title.errors %}
+    <p>Title Errors: {{ form.title.errors }}</p>
+{% endif %}
+
+{% if form.address.errors %}
+    <p>Address Errors: {{ form.address.errors }}</p>
+{% endif %}
+
+{% if form.submit.errors %}
+    <p>Submit Errors: {{ form.submit.errors }}</p>
+{% endif %}
+
+{% if form.csrf_token.errors %}
+    <p>CSRF Token Errors: {{ form.csrf_token.errors }}</p>
+{% endif %}
+
+{% if form.title.value %}
+    <p>Title Value: {{ form.title.value }}</p>
+{% endif %}
+
+{% if form.address.value %}
+    <p>Address Value: {{ form.address.value }}</p>
+{% endif %}
+
+{% if form.submit.value %}
+    <p>Submit Value: {{ form.submit.value }}</p>
+{% endif %}
+
+{% if form.csrf_token.value %}
+    <p>CSRF Token Value: {{ form.csrf_token.value }}</p>
+{% endif %} 
+
+{% if form.errors %}
+    <p>Errors: {{ form.errors }}</p>
+{% endif %}
+
+{% if form.title.errors %}
+    <p>Title Errors: {{ form.title.errors }}</p>
+{% endif %}
+
+{% if form.address.errors %}
+    <p>Address Errors: {{ form.address.errors }}</p>
+{% endif %}
+
+{% if form.submit.errors %}
+    <p>Submit Errors: {{ form.submit.errors }}</p>
+{% endif %}
+
+{% if form.csrf_token.errors %}
+    <p>CSRF Token Errors: {{ form.csrf_token.errors }}</p>
+{% endif %}
+
+{% if form.title.value %}
+    <p>Title Value: {{ form.title.value }}</p>
+{% endif %}
+
+{% if form.address.value %}
+    <p>Address Value: {{ form.address.value }}</p>
+{% endif %}
+
+{% if form.submit.value %}
+    <p>Submit Value: {{ form.submit.value }}</p>
+{% endif %}
+
+{% if form.csrf_token.value %}
+    <p>CSRF Token Value: {{ form.csrf_token.value }}</p>
+{% endif %}     
+
+{% if form.errors %}
+    <p>Errors: {{ form.errors }}</p>
+{% endif %}
+
+{% if form.title.errors %}
+    <p>Title Errors: {{ form.title.errors }}</p>
+{% endif %}
+
+{% if form.address.errors %}
+    <p>Address Errors: {{ form.address.errors }}</p>
+{% endif %}
+
+{% if form.submit.errors %}
+    <p>Submit Errors: {{ form.submit.errors }}</p>
+{% endif %}
+
+{% if form.csrf_token.errors %}
+    <p>CSRF Token Errors: {{ form.csrf_token.errors }}</p>
+{% endif %}
+
+{% if form.title.value %}
+    <p>Title Value: {{ form.title.value }}</p>
+{% endif %}
+
+{% if form.address.value %}
+    <p>Address Value: {{ form.address.value }}</p>
+{% endif %}
+
+{% if form.submit.value %}
+    <p>Submit Value: {{ form.submit.value }}</p>
+{% endif %}
+
+{% if form.csrf_token.value %}
+    <p>CSRF Token Value: {{ form.csrf_token.value }}</p>
+{% endif %}
+
+{% if form.errors %}
+    <p>Errors: {{ form.errors }}</p>
+{% endif %}
+
+{% if form.title.errors %}
+    <p>Title Errors: {{ form.title.errors }}</p>
+{% endif %}
+
+{% if form.address.errors %}
+    <p>Address Errors: {{ form.address.errors }}</p>
+{% endif %}
+
+{% if form.submit.errors %}
+    <p>Submit Errors: {{ form.submit.errors }}</p>
+{% endif %}
+
+{% if form.csrf_token.errors %}
+    <p>CSRF Token Errors: {{ form.csrf_token.errors }}</p>
+{% endif %}
+
+{% if form.title.value %}
+    <p>Title Value: {{ form.title.value }}</p>
+{% endif %}
+
+{% if form.address.value %}
+    <p>Address Value: {{ form.address.value }}</p>
+{% endif %}
+
+{% if form.submit.value %}
+    <p>Submit Value: {{ form.submit.value }}</p>
+{% endif %}
+
+{% if form.csrf_token.value %}
+    <p>CSRF Token Value: {{ form.csrf_token.value }}</p>
+{% endif %}     
+
+{% if form.errors %}
+    <p>Errors: {{ form.errors }}</p>
+{% endif %}
+
+{% if form.title.errors %}
+    <p>Title Errors: {{ form.title.errors }}</p>
+{% endif %}
+
+{% if form.address.errors %}
+    <p>Address Errors: {{ form.address.errors }}</p>
+{% endif %}
+
+{% if form.submit.errors %}
+    <p>Submit Errors: {{ form.submit.errors }}</p>
+{% endif %}
+
+{% if form.csrf_token.errors %}
+    <p>CSRF Token Errors: {{ form.csrf_token.errors }}</p>
+{% endif %}
+
+{% if form.title.value %}
+    <p>Title Value: {{ form.title.value }}</p>
+{% endif %}
+
+{% if form.address.value %}
+    <p>Address Value: {{ form.address.value }}</p>
+{% endif %}
+
+{% if form.submit.value %}
+    <p>Submit Value: {{ form.submit.value }}</p>
+{% endif %}
+
+{% if form.csrf_token.value %}
+    <p>CSRF Token Value: {{ form.csrf_token.value }}</p>
+{% endif %}
+
+{% if form.errors %}
+    <p>Errors: {{ form.errors }}</p>
+{% endif %}
+
+{% if form.title.errors %}
+    <p>Title Errors: {{ form.title.errors }}</p>
+{% endif %}
+
+{% if form.address.errors %}
+    <p>Address Errors: {{ form.address.errors }}</p>
+{% endif %}
+
+{% if form.submit.errors %}
+    <p>Submit Errors: {{ form.submit.errors }}</p>
+{% endif %}
+
+{% if form.csrf_token.errors %}
+    <p>CSRF Token Errors: {{ form.csrf_token.errors }}</p>
+{% endif %}
+
+{% if form.title.value %}
+    <p>Title Value: {{ form.title.value }}</p>
+{% endif %}
+
+{% if form.address.value %}
+    <p>Address Value: {{ form.address.value }}</p>
+{% endif %}
+
+{% if form.submit.value %}
+    <p>Submit Value: {{ form.submit.value }}</p>
+{% endif %}
+
+{% if form.csrf_token.value %}
+    <p>CSRF Token Value: {{ form.csrf_token.value }}</p>
+{% endif %}

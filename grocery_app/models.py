@@ -9,6 +9,26 @@ class ItemCategory(FormEnum):
     BAKERY = 'Bakery'
     PANTRY = 'Pantry'
     FROZEN = 'Frozen'
+    REFRIGERATED = 'Refrigerated'
+    COSMETICS = 'Cosmetics'
+    PERSONAL_CARE = 'Personal Care'
+    HOUSEHOLD = 'Household'
+    PET_SUPPLIES = 'Pet Supplies'
+    CLOTHING = 'Clothing'
+    ELECTRONICS = 'Electronics'
+    TOYS = 'Toys'
+    BOOKS = 'Books'
+    SPORTS = 'Sports'
+    AUTOMOTIVE = 'Automotive'
+    BEAUTY = 'Beauty'
+    HEALTH = 'Health'
+    OFFICE = 'Office'
+    GARDEN = 'Garden'
+    HOME_IMPROVEMENT = 'Home Improvement'
+    FURNITURE = 'Furniture'
+    JEWELRY = 'Jewelry'
+    LUGGAGE = 'Luggage'
+    Fruit = 'Fruit'
     OTHER = 'Other'
 
 
@@ -27,6 +47,7 @@ class GroceryItem(db.Model):
     price = db.Column(db.Float(precision=2), nullable=False)
     category = db.Column(db.Enum(ItemCategory), default=ItemCategory.OTHER)
     photo_url = db.Column(db.String)
-    store_id = db.Column(
-        db.Integer, db.ForeignKey('grocery_store.id'), nullable=False)
+    store_id = db.Column(db.Integer,
+                         db.ForeignKey('grocery_store.id'),
+                         nullable=False)
     store = db.relationship('GroceryStore', back_populates='items')
