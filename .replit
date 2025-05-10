@@ -2,3 +2,4 @@ modules = ["python-3.11", "python-3.12", "web"]
 
 [nix]
 channel = "stable-24_05"
+packages = ["cargo", "libffi", "libiconv", "pkg-config", "rustc"]
