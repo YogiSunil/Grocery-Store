@@ -17,9 +17,11 @@ def signup():
         existing_email = User.query.filter_by(email=form.email.data).first()
         
         if existing_user:
+            print(f"Signup failed: Username '{form.username.data}' already exists")
             flash('Username already exists. Please choose a different one.')
             return render_template('signup.html', form=form)
         elif existing_email:
+            print(f"Signup failed: Email '{form.email.data}' already registered")
             flash('Email already registered. Please use a different email.')
             return render_template('signup.html', form=form)
             
@@ -31,6 +33,7 @@ def signup():
         )
         db.session.add(user)
         db.session.commit()
+        print(f"New user created: {user.username} (ID: {user.id})")
         flash('Account created successfully! Please login.')
         return redirect(url_for('auth.login'))
     return render_template('signup.html', form=form)
@@ -40,11 +43,20 @@ def login():
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
-        if user and bcrypt.check_password_hash(user.password, form.password.data):
-            login_user(user, remember=True)
-            next_page = request.args.get('next')
-            return redirect(next_page if next_page else url_for('main.home'))
-        flash('Invalid username or password. Please try again.')
+        if not user:
+            print(f"Login failed: User '{form.username.data}' not found")
+            flash('Invalid username or password. Please try again.')
+            return render_template('login.html', form=form)
+            
+        if not bcrypt.check_password_hash(user.password, form.password.data):
+            print(f"Login failed: Invalid password for user '{form.username.data}'")
+            flash('Invalid username or password. Please try again.')
+            return render_template('login.html', form=form)
+            
+        login_user(user, remember=True)
+        print(f"User '{user.username}' logged in successfully")
+        next_page = request.args.get('next')
+        return redirect(next_page if next_page else url_for('main.home'))
     return render_template('login.html', form=form)
 
 @auth.route('/logout')
