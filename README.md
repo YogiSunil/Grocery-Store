@@ -1,29 +1,79 @@
-# Homework 3: Grocery Store
 
-_For instructions on how to complete this assignment, see [here](https://github.com/Tech-at-DU/ACS-1220-Authentication-and-Associations/blob/master/Assignments/grocery-store-part-2.md)._
+# Grocery Store Tracker
 
-## Setup
+A Flask web application for tracking grocery items across multiple stores and managing store inventories.
 
-Clone this repository to your computer. 
+## Features
 
-**Take a look at the code** - it looks a bit different than what you're used to. Namely, the code is now separated out into several files rather than being written in a single `app.py` file. Since we're now writing model and form code as well as route code, this will help us to maintain some structure and separation.
+- Create and manage grocery stores with addresses
+- Add and update grocery items with details like:
+  - Name
+  - Price
+  - Category (Produce, Deli, Bakery, etc.)
+  - Photo URL
+- Associate items with specific stores
+- View all stores and their inventory
+- Add existing items to different stores
+- Responsive UI with clean design
+- Form validation for data integrity
 
-**To run the code**, navigate to the project folder and run the following to create a virtual environment and install the required packages:
+## Technologies Used
 
+- Flask
+- SQLAlchemy
+- WTForms
+- SQLite Database
+- HTML/CSS
+- Python
+
+## Installation & Setup
+
+1. Clone the repository:
+```bash
+git clone https://github.com/YogiSunil/Grocery-Store.git
+cd Grocery-Store
 ```
-python3 -m venv venv
-source venv/bin/activate
+
+2. Install required packages:
+```bash
 pip install -r requirements.txt
 ```
 
-Then rename the `.env.example` file as `.env`:
-
-```
-cp .env.example .env
-```
-
-Then you can run the server:
-
-```
+3. Start the application:
+```bash
 python app.py
 ```
+
+4. Open your browser and navigate to `http://localhost:5000`
+
+## Usage
+
+1. Create a new store using the "New Store" button
+2. Add items to the store using "New Item" button
+3. View store details by clicking on store names
+4. Edit store/item details on their respective detail pages
+5. Add existing items to stores from the store detail page
+
+## Project Structure
+
+```
+grocery_app/
+├── static/          # Static files (CSS, images)
+├── templates/       # HTML templates
+├── forms.py         # Form classes
+├── models.py        # Database models
+├── routes.py        # Application routes
+└── utils.py         # Utility functions
+```
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## License
+
+This project is open source and available under the MIT License.
