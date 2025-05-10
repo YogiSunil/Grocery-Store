@@ -1,4 +1,4 @@
-
+ 
 from flask_wtf import FlaskForm
 from wtforms import StringField, DateField, SelectField, SubmitField, FloatField, PasswordField
 from wtforms_sqlalchemy.fields import QuerySelectField
