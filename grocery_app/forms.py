@@ -31,6 +31,8 @@ class GroceryItemForm(FlaskForm):
 class SignUpForm(FlaskForm):
     username = StringField('User Name',
         validators=[DataRequired(), Length(min=3, max=50)])
+    email = StringField('Email',
+        validators=[DataRequired(), Length(min=5, max=120)])
     password = PasswordField('Password', validators=[DataRequired()])
     submit = SubmitField('Sign Up')
 

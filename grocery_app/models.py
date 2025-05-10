@@ -42,6 +42,7 @@ class User(UserMixin, db.Model):
     """User model for storing user data"""
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True, nullable=False)
+    email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(200), nullable=False)
     shopping_list_items = db.relationship('GroceryItem', 
         secondary=shopping_list_table,
