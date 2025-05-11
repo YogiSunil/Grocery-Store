@@ -1,0 +1,44 @@
+Restricting Routes & Adding created_by
+Cool, now our users can log in! Next up, we only want to allow logged-in users to submit new GroceryStore and GroceryItem entries.
+
+Add the @login_required decorator to the routes for new_store, new_item, store_detail, and item_detail so that only logged-in users can access those pages.
+
+Now, we also want to add a created_by to the new instances of GroceryStore and GroceryItem. Modify the routes for new_store and new_item so that they add the flask_login.current_user object as the creator of each new instance. If an instance is edited, it shouldn't change who created it.
+
+Then, modify the templates for store_detail.html and item_detail.html so that they display the username of the user who created them.
+
+Adding a Shopping List Feature
+Our website is almost done! We just need to add the shopping list feature.
+
+Models
+In grocery_app/models.py, add a many-to-many relationship between User and GroceryItem for the shopping list items.
+
+In the User model, it should look something like this:
+
+class User(UserMixin, db.Model):
+    # ...
+    shopping_list_items = db.relationship(...)
+You'll also need to add a bridge table shopping_list_table which contains two foreign keys to User and GroceryItem.
+
+Routes
+In the item_detail route, add a button to add the item to the user's shopping list. This button should make a POST request to a route add_to_shopping_list and should pass the item's id.
+
+The function signature for the route should look like this:
+
+@main.route('/add_to_shopping_list/<item_id>', methods=['POST'])
+def add_to_shopping_list(item_id):
+    # ... adds item to current_user's shopping list
+Now, we just need a way for a user to see what is on their shopping list!
+
+Add a route shopping_list which displays in a template all of the user's shopping list items. Make sure to use the @login_required decorator so that only logged-in users can see it!
+
+The route should look like this:
+
+@main.route('/shopping_list')
+@login_required
+def shopping_list():
+    # ... get logged in user's shopping list items ...
+    # ... display shopping list items in a template ...
+Finally, add a link to base.html to the shopping list page so that the user can access it.
+
+Stretch Challenge: Add a "delete" button to each shopping list item on the page, to remove it from the user's shopping list.
