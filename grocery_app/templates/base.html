@@ -1,31 +1,40 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Grocery Store Tracker</title>
-        <link rel="stylesheet" href="/static/style.css">
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
-    </head>
-    <body>
-        <div id="content">
-            {% for message in get_flashed_messages() %}
-                <p>{{ message }}</p>
-            {% endfor %}
-            <nav>
-                <a href="/">Home</a>
-                <div>
-                    {% if current_user.is_authenticated %}
-                        <a href="/new_store">New Store</a>
-                        <a href="/new_item">New Item</a>
-                        <a href="/shopping_list">Shopping List</a>
-                        <a href="/logout">Log Out</a>
-                    {% else %}
-                        <a href="/login">Log In</a>
-                        <a href="/signup">Sign Up</a>
-                    {% endif %}
-                </div>
-            </nav>
-            {% block content %}{% endblock %}
-        </div>
-    </body>
+
+<head>
+    <title>Grocery Store Tracker</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div id="content">
+        {% for message in get_flashed_messages() %}
+        <p>{{ message }}</p>
+        {% endfor %}
+        <nav>
+            <a href="/">Home</a>
+            <div>
+                {% if current_user.is_authenticated %}
+                <a href="/new_store">New Store</a>
+                <a href="/new_item">New Item</a>
+                <a href="/shopping_list">Shopping List</a>
+
+                <a href="/item_details">Item Details</a>
+
+
+
+
+                <a href="/logout">Log Out</a>
+                {% else %}
+                <a href="/login">Log In</a>
+                <a href="/signup">Sign Up</a>
+                {% endif %}
+            </div>
+        </nav>
+        {% block content %}{% endblock %}
+    </div>
+</body>
+
 </html>
