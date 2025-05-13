@@ -10,11 +10,12 @@
 <p><strong>Category:</strong> {{ item.category }}</p>
 
 <p><strong>Store:</strong> {{ item.store.title }}</p>
-
+<p><strong>Price:</strong> ${{ item.price }}</p>
+<p><strong>Category:</strong> {{ item.category }}</p>
 <p><strong>Created by:</strong> {{ item.created_by.username }}</p>
 
 <form method="POST" action="{{ url_for('main.add_to_shopping_list', item_id=item.id) }}">
-    <input type="submit" value="Add to Shopping List">
+    <input type="submit" value="Add to Shopping List" class="button">
 </form>
 
 <h2>Edit Item</h2>
