@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>All Items</h1>
+
+<div class="items">
+    {% for item in all_items %}
+    <div class="item-details">
+        <a href="{{ url_for('main.item_detail', item_id=item.id) }}">
+            <img src="{{ item.photo_url }}" alt="{{ item.name }}" width="200px">
+            <p><strong>{{ item.name }}</strong></p>
+        </a>
+        <p><strong>Price:</strong> ${{ item.price }}</p>
+        {% if current_user.is_authenticated %}
+        <form method="POST" action="{{ url_for('main.add_item_to_store', item_id=item.id) }}">
+            <label for="store_id_{{ item.id }}">Add to a store:</label>
+            <select name="store_id" id="store_id_{{ item.id }}">
+                {% for store in all_stores %}
+                    <option value="{{ store.id }}">{{ store.title }}</option>
+                {% endfor %}
+            </select>
+            <button type="submit">Add</button>
+        </form>
+        {% endif %}
+    </div>
+    {% endfor %}
+</div>
+
+{% if not all_items %}
+<p>No items found.</p>
+{% endif %}
+
+{% endblock %}
