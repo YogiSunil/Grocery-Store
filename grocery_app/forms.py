@@ -1,3 +1,4 @@
+
  
 from flask_wtf import FlaskForm
 from wtforms import StringField, DateField, SelectField, SubmitField, FloatField, PasswordField
@@ -7,6 +8,7 @@ from grocery_app.models import GroceryStore, ItemCategory, User
 from flask_bcrypt import Bcrypt
 
 bcrypt = Bcrypt()
+
 
 class GroceryStoreForm(FlaskForm):
     """Form for adding/updating a GroceryStore."""
@@ -26,6 +28,7 @@ class GroceryItemForm(FlaskForm):
     store = QuerySelectField('Store',
         query_factory=lambda: GroceryStore.query.all(),
         get_label='title')
+
     submit = SubmitField('Submit')
 
 class SignUpForm(FlaskForm):

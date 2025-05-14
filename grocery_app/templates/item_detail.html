@@ -10,6 +10,10 @@
 <p><strong>Category:</strong> {{ item.category }}</p>
 
 <p><strong>Store:</strong> {{ item.store.title }}</p>
+<p><strong>Price:</strong> ${{ item.price }}</p>
+<p><strong>Category:</strong> {{ item.category }}</p>
+<p><strong>Created by:</strong> {{ item.created_by.username }}</p>
+
 
 {% if current_user.is_authenticated %}
     {% if item in current_user.shopping_list_items %}
@@ -25,11 +29,13 @@
     {% endif %}
 {% endif %}
 
+
 <h2>Edit Item</h2>
 
 <form method="POST">
     <fieldset>
         <legend>Please enter your information:</legend>
+
         {{ form.csrf_token }}
         {{ form.name.label }} {{ form.name }}<br>
         {% for error in form.name.errors %}<span class="error">{{ error }}</span>{% endfor %}
@@ -42,6 +48,7 @@
         {{ form.store.label }} {{ form.store }}<br>
         {% for error in form.store.errors %}<span class="error">{{ error }}</span>{% endfor %}
         {{ form.submit }}
+
     </fieldset>
 </form>
 
