@@ -1,6 +1,7 @@
 
 from flask import Blueprint, request, render_template, redirect, url_for, flash
 from datetime import date, datetime
+
 from grocery_app.models import GroceryStore, GroceryItem, User
 from grocery_app.forms import GroceryStoreForm, GroceryItemForm, SignUpForm, LoginForm
 from grocery_app.extensions import db, bcrypt
@@ -67,8 +68,7 @@ def logout():
 
 @main.route("/")
 def home():
-    all_stores = GroceryStore.query.all()
-    return render_template("home.html", all_stores=all_stores)
+
 
 @main.route("/new_store", methods=['GET', 'POST'])
 @login_required
@@ -77,8 +77,10 @@ def new_store():
     if form.validate_on_submit():
         new_store = GroceryStore(
             title=form.title.data,
+
             address=form.address.data,
             created_by=current_user
+
         )
         db.session.add(new_store)
         db.session.commit()
@@ -88,6 +90,7 @@ def new_store():
 
 @main.route("/new_item", methods=['GET', 'POST'])
 @login_required
+
 def new_item():
     form = GroceryItemForm()
     if form.validate_on_submit():
@@ -96,8 +99,10 @@ def new_item():
             price=form.price.data,
             category=form.category.data,
             photo_url=form.photo_url.data,
+
             store=form.store.data,
             created_by=current_user
+
         )
         db.session.add(new_item)
         db.session.commit()
@@ -108,6 +113,7 @@ def new_item():
 @main.route('/store/<store_id>', methods=['GET', 'POST'])
 @login_required
 def store_detail(store_id):
+
     store = GroceryStore.query.get(store_id)
     form = GroceryStoreForm(obj=store)
     if form.validate_on_submit():
@@ -119,10 +125,13 @@ def store_detail(store_id):
         return redirect(url_for('main.store_detail', store_id=store.id))
     return render_template('store_detail.html', store=store, form=form)
 
+
 @main.route('/item/<item_id>', methods=['GET', 'POST'])
 @login_required
 def item_detail(item_id):
+
     item = GroceryItem.query.get(item_id)
+
     form = GroceryItemForm(obj=item)
     if form.validate_on_submit():
         item.name = form.name.data
@@ -130,6 +139,7 @@ def item_detail(item_id):
         item.category = form.category.data
         item.photo_url = form.photo_url.data
         item.store = form.store.data
+
         db.session.add(item)
         db.session.commit()
         flash('Item was updated successfully.')
@@ -160,3 +170,4 @@ def remove_from_shopping_list(item_id):
         db.session.commit()
         flash('Item removed from shopping list!')
     return redirect(url_for('main.shopping_list'))
+

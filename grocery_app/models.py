@@ -66,6 +66,7 @@ class GroceryItem(db.Model):
     name = db.Column(db.String(80), nullable=False)
     price = db.Column(db.Float, nullable=False)
     category = db.Column(db.Enum(ItemCategory), default=ItemCategory.OTHER)
+
     photo_url = db.Column(db.String(200))
     store_id = db.Column(db.Integer,
                          db.ForeignKey('grocery_store.id'),
@@ -73,3 +74,4 @@ class GroceryItem(db.Model):
     store = db.relationship('GroceryStore', back_populates='items')
     created_by_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     created_by = db.relationship('User')
+

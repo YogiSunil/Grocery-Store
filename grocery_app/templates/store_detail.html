@@ -6,7 +6,7 @@
 <p><strong>Address:</strong> {{ store.address }}</p>
 <p><strong>Created by:</strong> {{ store.created_by.username }}</p>
 
-<h2>Items</h2>
+<h2>Store Items</h2>
 
 <div class="items">
 {% for item in store.items %}
@@ -19,11 +19,13 @@
 {% endfor %}
 </div>
 
+
 <h2>Edit Store</h2>
 
 <form method="POST">
     <fieldset>
         <legend>Please enter your information:</legend>
+
         {% include '_store_form.html' %}
     </fieldset>
 </form>
