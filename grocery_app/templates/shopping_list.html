@@ -5,7 +5,9 @@
 <h1>My Shopping List</h1>
 
 <div class="items">
-{% for item in current_user.shopping_list_items %}
+
+{% for item in shopping_list_items %}
+
     <div class="item-details">
         <a href="{{ url_for('main.item_detail', item_id=item.id) }}">{{ item.name }}</a>
         <p><img src="{{ item.photo_url }}" width="200px"></p>
@@ -18,8 +20,9 @@
 {% endfor %}
 </div>
 
-{% if not current_user.shopping_list_items %}
+{% if not shopping_list_items %}
 <p>No items in your shopping list yet!</p>
 {% endif %}
 
 {% endblock %}
+

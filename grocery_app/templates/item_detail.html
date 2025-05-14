@@ -14,16 +14,41 @@
 <p><strong>Category:</strong> {{ item.category }}</p>
 <p><strong>Created by:</strong> {{ item.created_by.username }}</p>
 
-<form method="POST" action="{{ url_for('main.add_to_shopping_list', item_id=item.id) }}">
-    <input type="submit" value="Add to Shopping List" class="button">
-</form>
+
+{% if current_user.is_authenticated %}
+    {% if item in current_user.shopping_list_items %}
+        <form method="POST" action="{{ url_for('main.remove_from_shopping_list', item_id=item.id) }}">
+            {{ form.csrf_token }}
+            <button type="submit">Remove from Shopping List</button>
+        </form>
+    {% else %}
+        <form method="POST" action="{{ url_for('main.add_to_shopping_list', item_id=item.id) }}">
+            {{ form.csrf_token }}
+            <button type="submit">Add to Shopping List</button>
+        </form>
+    {% endif %}
+{% endif %}
+
 
 <h2>Edit Item</h2>
 
 <form method="POST">
     <fieldset>
         <legend>Please enter your information:</legend>
-        {% include '_item_form.html' %}
+
+        {{ form.csrf_token }}
+        {{ form.name.label }} {{ form.name }}<br>
+        {% for error in form.name.errors %}<span class="error">{{ error }}</span>{% endfor %}
+        {{ form.price.label }} {{ form.price }}<br>
+        {% for error in form.price.errors %}<span class="error">{{ error }}</span>{% endfor %}
+        {{ form.category.label }} {{ form.category }}<br>
+        {% for error in form.category.errors %}<span class="error">{{ error }}</span>{% endfor %}
+        {{ form.photo_url.label }} {{ form.photo_url }}<br>
+        {% for error in form.photo_url.errors %}<span class="error">{{ error }}</span>{% endfor %}
+        {{ form.store.label }} {{ form.store }}<br>
+        {% for error in form.store.errors %}<span class="error">{{ error }}</span>{% endfor %}
+        {{ form.submit }}
+
     </fieldset>
 </form>
 
